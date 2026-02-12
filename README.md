@@ -1,4 +1,4 @@
-# Домашнее задание к занятию "`GitLab`" - `Сысоев Алексей`
+# Домашнее задание к занятию "`Система мониторинга Zabbix`" - `Сысоев Алексей`
 ---
 ### Задание 1 
 
@@ -14,50 +14,53 @@
 1. Прикрепите в файл README.md скриншот авторизации в админке.
 2. Приложите в файл README.md текст использованных команд в GitHub.
 
-**Решение:**
-Команды:
+**Решение:**  
+Команды:  
 ```# ssh 0dm1n@89.169.132.67```
 
-Установка PG:
-```# sudo apt update && sudo apt upgrade -y 
-# sudo apt install postgresql postgresql-contrib -y  ```
+Установка PG:  
+```# sudo apt update && sudo apt upgrade -y```     
+```# sudo apt install postgresql postgresql-contrib -y```  
 
-Что происходит при выполнении этих команд:
-sudo apt update — обновляет локальный список пакетов, чтобы система «видела» актуальные версии ПО;
-sudo apt upgrade -y — обновляет уже установленные пакеты (-y автоматически подтверждает действие, чтобы не ждать ввода);
-postgresql — основной пакет СУБД;
-postgresql-contrib — дополнительные модули (например, pgcrypto для шифрования или uuid-ossp для генерации UUID).
+Что происходит при выполнении этих команд:  
+- sudo apt update — обновляет локальный список пакетов, чтобы система «видела» актуальные версии ПО;  
+- sudo apt upgrade -y — обновляет уже установленные пакеты (-y автоматически подтверждает действие, чтобы не ждать ввода);  
+- postgresql — основной пакет СУБД;  
+- postgresql-contrib — дополнительные модули (например, pgcrypto для шифрования или uuid-ossp для генерации UUID).  
 
-https://www.zabbix.com/download?zabbix=6.0&os_distribution=debian&os_version=11&components=server_frontend_agent&db=pgsql&ws=apache
-Install Zabbix repository
-```# wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian11_all.deb
-# dpkg -i zabbix-release_latest_6.0+debian11_all.deb
-# apt update```
+Далее, по ссылке:  
+https://www.zabbix.com/download?zabbix=6.0&os_distribution=debian&os_version=11&components=server_frontend_agent&db=pgsql&ws=apache  
+Install Zabbix repository  
+```# wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian11_all.deb```  
+```# dpkg -i zabbix-release_latest_6.0+debian11_all.deb```  
+```# apt update```  
 
-Install Zabbix server, frontend, agent
-```# apt install zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent```
+Install Zabbix server, frontend, agent  
+```# apt install zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent```  
 
-Create initial database
-```# sudo -u postgres createuser --pwprompt zabbix
-# sudo -u postgres createdb -O zabbix zabbix```
+Create initial database  
+```# sudo -u postgres createuser --pwprompt zabbix```  
+```# sudo -u postgres createdb -O zabbix zabbix```  
 
-или:
-```# su - postgres -c 'psql --command "CREATE USER zabbix WITH PASSWORD '\'1234567890\'';"' 
-# su - postgres -c 'psql --command "CREATE DATABASE zabbix OWNER zabbix;"'```
+или:  
+```# su - postgres -c 'psql --command "CREATE USER zabbix WITH PASSWORD '\'1234567890\'';"'```  
+```# su - postgres -c 'psql --command "CREATE DATABASE zabbix OWNER zabbix;"'```  
 
-On Zabbix server host import initial schema and data. You will be prompted to enter your newly created password.
+On Zabbix server host import initial schema and data. You will be prompted to enter your newly created password.  
 ```# zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix```
 
-Configure the database for Zabbix server
-```# sed -i 's/# DBPassword=/DBPassword=1234567890/g' /etc/zabbix/zabbix_server.conf```
+Configure the database for Zabbix server  
+```# sed -i 's/# DBPassword=/DBPassword=1234567890/g' /etc/zabbix/zabbix_server.conf```  
 
-Start Zabbix server and agent processes
-```# systemctl restart zabbix-server zabbix-agent apache2
-# systemctl enable zabbix-server zabbix-agent apache2```
+Start Zabbix server and agent processes  
+```# systemctl restart zabbix-server zabbix-agent apache2```  
+```# systemctl enable zabbix-server zabbix-agent apache2```  
 
-**Скриншоты:**
-<img src="https://raw.githubusercontent.com/1000karat/8-03-gitlab-hw/refs/heads/main/img/_0001.png">  
-<img src="https://raw.githubusercontent.com/1000karat/8-03-gitlab-hw/refs/heads/main/img/_0002.png"><img src="https://raw.githubusercontent.com/1000karat/8-03-gitlab-hw/refs/heads/main/img/_0003.png"><img src="https://raw.githubusercontent.com/1000karat/8-03-gitlab-hw/refs/heads/main/img/_0004.png">
+**Скриншоты:**  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0001.png">  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0002.png">  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0003.png">  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0004.png">  
 
 ---
 
@@ -81,29 +84,32 @@ Start Zabbix server and agent processes
 **Решение:**
 ```# ssh -J 0dm1n@89.169.132.67 0dm1n@10.10.0.20```
 
-https://www.zabbix.com/download?zabbix=6.0&os_distribution=ubuntu&os_version=22.04&components=agent&db=&ws=
+Далее, по ссылке:  
+https://www.zabbix.com/download?zabbix=6.0&os_distribution=ubuntu&os_version=22.04&components=agent&db=&ws=  
 
-Install Zabbix repository
-```# wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_6.0+ubuntu22.04_all.deb
-# dpkg -i zabbix-release_latest_6.0+ubuntu22.04_all.deb
-# apt update```
+Install Zabbix repository  
+```# wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_6.0+ubuntu22.04_all.deb```  
+```# dpkg -i zabbix-release_latest_6.0+ubuntu22.04_all.deb```  
+```# apt update```  
 
-Install Zabbix agent
+Install Zabbix agent  
 ```# apt install zabbix-agent```
 
-Правим конфиг
+Правим конфиг  
 ```# sed -i 's/Server=127.0.0.1/Server=10.10.0.10/g' /etc/zabbix/zabbix_agentd.conf```
 
-Start Zabbix agent process
-```# systemctl restart zabbix-agent
-# systemctl enable zabbix-agent```
+Start Zabbix agent process  
+```# systemctl restart zabbix-agent```  
+```# systemctl enable zabbix-agent```  
 
-Такие шаги и для Debian.
+Такие шаги и для Debian.  
 
-**Скриншоты:**
-<img src="https://raw.githubusercontent.com/1000karat/8-03-gitlab-hw/refs/heads/main/img/_0005.png">  
-<img src="https://raw.githubusercontent.com/1000karat/8-03-gitlab-hw/refs/heads/main/img/_0006.png"><img src="https://raw.githubusercontent.com/1000karat/8-03-gitlab-hw/refs/heads/main/img/_0007.png">  
-<img src="https://raw.githubusercontent.com/1000karat/8-03-gitlab-hw/refs/heads/main/img/_0008.png">
+**Скриншоты:**  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0005.png">  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0006.png">  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0007.png">  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0008.png">  
+
 ---
 ## Задание 3 со звёздочкой*
 Установите Zabbix Agent на Windows (компьютер) и подключите его к серверу Zabbix.
@@ -116,4 +122,5 @@ Start Zabbix agent process
 
 1. Выполнено минимум 2 обязательных задания
 2. Прикреплены требуемые скриншоты и тексты 
+
 3. Задание оформлено в шаблоне с решением и опубликовано на GitHub

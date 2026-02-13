@@ -19,7 +19,7 @@
 ```# ssh 0dm1n@89.169.132.67```
 
 Установка PG:  
-```# sudo apt update && sudo apt upgrade -y```     
+```# sudo apt update && sudo apt upgrade -y```  
 ```# sudo apt install postgresql postgresql-contrib -y```  
 
 Что происходит при выполнении этих команд:  
@@ -93,7 +93,7 @@ Install Zabbix repository
 ```# apt update```  
 
 Install Zabbix agent  
-```# apt install zabbix-agent```
+```# apt install zabbix-agent```  
 
 Правим конфиг  
 ```# sed -i 's/Server=127.0.0.1/Server=10.10.0.10/g' /etc/zabbix/zabbix_agentd.conf```
@@ -105,8 +105,14 @@ Start Zabbix agent process
 Такие шаги и для Debian.  
 
 **Скриншоты:**  
+скриншот раздела Configuration > Hosts, где видно, что агенты подключены к серверу:  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0005.png">  
-<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0006.png">  
+
+скриншот лога zabbix agent, где видно, что он работает с сервером:  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0009.png">  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_00010.png">  
+
+скриншот Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные:  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0007.png">  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0008.png">  
 

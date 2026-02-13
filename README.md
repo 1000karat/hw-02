@@ -57,6 +57,7 @@ Start Zabbix server and agent processes
 ```# systemctl enable zabbix-server zabbix-agent apache2```  
 
 **Скриншоты:**  
+скриншот авторизации в админке:  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0001.png">  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0002.png">  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0003.png">  
@@ -109,8 +110,8 @@ Start Zabbix agent process
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0005.png">  
 
 скриншот лога zabbix agent, где видно, что он работает с сервером:  
-<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0009.png">  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_00010.png">  
+<img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0009.png">  
 
 скриншот Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные:  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0007.png">  

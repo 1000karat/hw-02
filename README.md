@@ -57,8 +57,9 @@ Start Zabbix server and agent processes
 ```# systemctl enable zabbix-server zabbix-agent apache2```  
 
 **Скриншоты:**  
-скриншот авторизации в админке:  
+скриншот VM:  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0001.png">  
+скриншот авторизации в админке:  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0002.png">  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0003.png">  
 <img src="https://raw.githubusercontent.com/1000karat/hw-02/refs/heads/main/img/_0004.png">  
